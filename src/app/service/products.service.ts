@@ -47,31 +47,34 @@ export class ProductService {
           return mess
         }
 
-
+//aggiunge prodotti nel carrello
 aggiungiProdottoAlCarrello(prod: Product){
   this.prodottiNelCarrello.push(prod);
+  this.conta();
 }
 
+//prende i prodotti nel carrello
 getProdottiNelCarrello(){
   return this.prodottiNelCarrello;
 }
 
+//rimuve prodotti nel carrello
 rimuoviProdotto(idProd: number){
   this.prodottiNelCarrello.splice(idProd, 1);
   this.sottrai();
 }
 
-
+//conta quanti prodotti sono nel carrello
 conta(){
   this.counter++;
   this.sub.next(this.counter);
 }
-
+//sottrae prodotti nel carrello
 sottrai(){
   this.counter--;
   this.sub.next(this.counter);
 }
-
+//azzera il contatore
 azzerraConta(){
   this.counter = 0;
   this.sub.next(this.counter);
